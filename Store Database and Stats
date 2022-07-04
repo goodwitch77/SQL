@@ -1,0 +1,23 @@
+--create a clothing store database
+
+CREATE TABLE craft_store (id INTEGER PRIMARY KEY, name TEXT, cost INTEGER, description TEXT, inventory INTEGER);
+
+INSERT INTO craft_store VALUES (1, "needles", 0.50, "for_sewing", 50), (2, "needles", 3.50, "for_knitting", 50), 
+(3, "hoop", 1.50, "for_crosstitch", 50), (4, "thread", 1.00, "for_sewing", 50), (5, "thread", 0.75, "for_crossstitch", 1000), 
+(6, "rainbow_yarn", 3.50, "for_knitting", 25), (7, "pastel_rainbow_yarn", 3.50, "for_knitting", 25),(8, "yellow_yarn", 3.50, "for_knitting", 25), 
+(9, "red_yarn", 3.50, "for_knitting", 25), (10, "orange_yarn", 3.50, "for_knitting", 25), (11, "pink_yarn", 3.50, "for_knitting", 25), 
+(12, "purple_yarn", 3.50, "for_knitting", 25), (13, "light_blue_yarn", 3.50, "for_knitting", 25), (14, "dark_blue_yarn", 3.50, "for_knitting", 25), 
+(15, "purple_yarn", 3.50, "for_knitting", 25);
+
+--show the database
+SELECT * FROM craft_store;
+
+--display the database ordered by inventory.
+SELECT * FROM craft_store ORDER BY inventory;
+
+--display the items that cost me more than 1 dollar and what they are for.
+SELECT * FROM craft_store WHERE cost > 1.00 ORDER BY description;
+
+--display how much my current inventory would cost to replace
+SELECT SUM (cost * inventory) FROM craft_store;
+
