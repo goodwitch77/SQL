@@ -1,0 +1,23 @@
+/* Create table about the people and what they do here */
+
+Create table MovieStars (id INTEGER PRIMARY KEY, actor_name TEXT, movie_name TEXT, release_date INTEGER);
+
+Create table Spouse (id Integer Primary Key, spouse_name TEXT, year_married Integer);
+
+Create Table Costars (name TEXT, costar Integer);
+
+Insert into MovieStars Values (1, "Ryan Reynolds", "Red Notice", 2021), (2, "Ryan Reynolds", "Hobbs and Shaw", 2019), (3, "Dwayne Johnson", "Hobbs and Shaw", 2019), (4, "Dwayne Johnson", "Jumanji Welcome to the Jungle", 2017),(5, "Dwayne Johnson", "Red Notice", 2017), (6, "Kevin Hart", "Jumanji Welcome to the Jungle", 2017),(7, "Kevin Hart", "Hobbs and Shaw", 2017), (8, "Gal Gadot", "Red Notice", 2021);
+
+INSERT INTO Spouse VALUES (1, "Blake Lively", 2012),
+(2, "Lauren Hashian", 2019), (3, "Eniko Hart", 2016), (4, "Jaron Varsano", 2008);
+
+INSERT INTO Costars VALUES ("Ryan Reynolds", 3), ("Ryan Reynolds", 5), ("Ryan Reynolds", 7), ("Ryan Reynolds", 8), ("Dwayne Johnson", 1), ("Dwayne Johnson", 2), ("Dwayne Johnson", 6), ("Dwayne Johnson", 7), ("Dwayne Johnson", 8), ("Kevin Hart", 2), ("Kevin Hart",3),  ("Kevin Hart",4 ), ("Gal Gadot", 1),  ("Gal Gadot", 5);
+
+
+
+--Who co-stared in what movie with whom (actor name)
+
+SELECT MS.id, MS.actor_name, MS.movie_name, Costars.name, Costars.costar
+FROM MovieStars as MS
+JOIN Costars
+ON MS.id = Costars.costar;
