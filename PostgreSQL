@@ -1,0 +1,7 @@
+-- Example query (PostgreSQL)
+--join 2 columns from database Netflix
+
+SELECT people.cast, titles.description
+FROM "Netflix"."netflix_people" people
+LEFT JOIN "Netflix"."netflix_titles_info" titles
+ON people.show_id=titles.show_id;
