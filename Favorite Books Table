@@ -1,4 +1,4 @@
-/**Book list: Philopher's Stone (1997), Chamber (1998), Prisioner (1999), Goblet (2000), Phoenix (2003), Prince (2005), Hallows (2007) **/
+/**Book list: Philosopher's's Stone (1997), Chamber (1998), Prisoner (1999), Goblet (2000), Phoenix (2003), Prince (2005), Hallows (2007) **/
 
 CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT, rating INTEGER );
 
