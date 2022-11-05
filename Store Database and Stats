@@ -12,6 +12,9 @@ INSERT INTO craft_store VALUES (1, "needles", 0.50, "for_sewing", 50), (2, "need
 --show the database
 SELECT * FROM craft_store;
 
+--display the database ordered by cost
+SELECT name, cost FROM craft_store ORDER BY cost;
+
 --display the database ordered by inventory.
 SELECT * FROM craft_store ORDER BY inventory;
 
