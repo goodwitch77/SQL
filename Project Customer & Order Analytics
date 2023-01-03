@@ -47,10 +47,28 @@
 --ON FEB.orderid=cust.order_id
 --WHERE Feb.Quantity>2 
 
-select 
-sum(Quantity), 
-product, 
-Sum(quantity)*price as revenue
-FROM BIT_DB.FebSales 
-WHERE location = '387 12th St, Austin, TX 73301'
-GROUP BY product
+--SELECT orderdate
+--FROM BIT_DB.FebSales
+--WHERE orderdate between '02/13/19 00:00' AND '09/18/19 00:00'
+
+--SELECT location
+--FROM BIT_DB.FebSales
+--WHERE orderdate = '02/18/19 01:35'
+
+--SELECT SUM(quantity)
+--FROM BIT_DB.FebSales
+--WHERE orderdate like '02/18/19%'
+
+--SELECT distinct Product
+--FROM BIT_DB.FebSales
+--WHERE Product like '%Batteries%'
+ 
+--SELECT distinct Product, Price
+--FROM BIT_DB.FebSales 
+--WHERE Price like '%.99'
+
+--List all products sold in LA in FEB and include how many of each were sold
+SELECT Product, SUM(quantity)
+FROM BIT_DB.FebSales
+Where location like '%Los Angeles%'
+GROUP BY Product
