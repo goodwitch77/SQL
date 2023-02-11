@@ -1,6 +1,6 @@
--- I downloaded Spotify data from Kaggle.
--- Create a table to insert Spotify data into.
---Then, I performed analytics on the data using SQL. 
+-- I downloaded this Spotify data from Kaggle.
+-- Create the table.
+
 
 #Creating the table: 
 CREATE TABLE BIT_DB.Spotifydata (
@@ -27,7 +27,7 @@ time_signature integer NOT NULL
 
 -- I explored the data using the following SQL. 
 
---How many songs listed are by olivia Rodrigo?
+--How many songs listed are by Olivia Rodrigo?
 SELECT * FROM BIT_DB.Spotifydata
 WHERE artist_name LIKE '%Olivia%'
 
@@ -39,4 +39,12 @@ GROUP BY artist_name, track_name
 Order BY popularity DESC
 LIMIT 10
 
--Seperate songs into 3 catagories based on popularity and danceability
+-Seperate songs into 3 catagories based on popularity
+ SELECT track_name, popularity,
+CASE
+WHEN popularity > 88 THEN 'Thats My JAM'
+WHEN popularity > 80 THEN 'Me Likey'
+ELSE 'I Wont Change The Station'
+END as Glendas
+FROM BIT_DB.Spotifydata 
+ORDER BY popularity DESC
