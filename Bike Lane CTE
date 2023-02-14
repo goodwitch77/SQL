@@ -1,0 +1,14 @@
+
+--Create a CTE to show the bile Lanes with a 4.0 rating or higher as Safe Lanes
+WITH safety_average_cte AS (
+SELECT street, AVG(safetyrating) as 'averagerating'
+FROM citybikelanes
+GROUP BY street)
+
+
+SELECT 
+street,
+averagerating,
+'safe lane' as 'label'
+FROM safety_average_cte
+WHERE rating >=4
