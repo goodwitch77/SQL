@@ -1,0 +1,38 @@
+
+--Create a CTE to show the bile Lanes with a 4.0 rating or higher as Safe Lanes
+WITH safety_average_cte AS (
+SELECT street, AVG(safetyrating) as 'averagerating'
+FROM citybikelanes
+GROUP BY street)
+
+
+SELECT 
+street,
+averagerating,
+'safe lane' as 'label'
+FROM safety_average_cte
+WHERE rating >=4
+
+
+--You need to give your boss the list of all the bike lanes, 
+--both safety ratings for each lane given by the two technicians, 
+--the average safety rating for each lane, 
+--and a label with the recommendation as "Remove", 
+--"Leave As-Is", or "Improvements Needed".
+
+SELECT street, safetyrating,
+AVG(safetyrating) OVER (PARTITION BY street) as "Average_safety_rating",
+CASE WHEN AVG(safetyrating) OVER (PARTITION BY street) >=4 THEN "Leave As-Is"
+    WHEN AVG(safetyrating) OVER (PARTITION BY street) <2.5 THEN "Remove"
+    ELSE "Improvements Needed"
+    END AS "Recommendation"
+FROM CityBikeLanes
+
+"Average_safety_rating"
+SELECT street, safetyrating,
+AVG(safetyrating) OVER (PARTITION BY street) as "Average_safety_rating",
+CASE WHEN "Average_safety_rating" >=4 THEN "Leave As-Is"
+    WHEN "Average_safety_rating" <2.5 THEN "Remove"
+    ELSE "Improvements Needed"
+    END AS "Recommendation"
+FROM CityBikeLanes
